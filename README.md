@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Crypto Exchange Platform
 
-## Getting Started
+A modern cryptocurrency exchange platform built with Next.js, featuring multi-step forms with comprehensive validation.
 
-First, run the development server:
+## Features
+
+- Multi-step form with validation
+- Real-time form validation using Formik & Yup
+- Loading states and error handling
+- Responsive design with Tailwind CSS
+
+## Prerequisites
+
+- Node.js 22.x or higher
+- npm or yarn
+
+## Setup Instructions
+
+1. **Clone the repository**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   git clone <https://github.com/Masterprecie/nova.git>
+   cd novacrust
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+   npm install
+   # or
+   yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Run the development server**
 
-## Learn More
+```bash
+   npm run dev
+   # or
+   yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Form Validation Rules
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Bank Details
 
-## Deploy on Vercel
+- **Bank**: Required
+- **Account Number**: Required, must be exactly 10 digits
+- **Account Name**: Required, minimum 3 characters
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Contact Details
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Email**: Required, must be valid email format
+- **Phone**: Required, 10-11 digits
+
+## Assumptions & Trade-offs
+
+### Assumptions:
+
+1. **No Backend Integration**: All data is stored in component state
+2. **Mock API Calls**: Simulated with setTimeout for demonstration
+3. **Nigerian Context**: Phone numbers use +234 prefix
+4. **Account Numbers**: Standard 10-digit format (NUBAN)
+
+### Trade-offs:
+
+1. **State Management**: Used React state instead of Redux/Zustand for simplicity
+2. **Validation Library**: Chose Formik + Yup for robust validation with minimal setup
+3. **No Persistence**: Form data is lost on page refresh (can be enhanced with localStorage)
+4. **Limited Banks**: Only 3 banks listed (can be expanded with API integration)
+
+## Form Flow
+
+1. **Step 1 - Bank Details**: Capture banking information
+2. **Step 2 - Contact Details**: Collect recipient contact info
+3. **Step 3 - Crypto Send**: Display wallet address and transaction details
+4. **Step 4 - Success**: Show confirmation and transaction summary
+
+## Styling
+
+- **Framework**: Tailwind CSS
+- **Component Library**: shadcn/ui
+- **Icons**: Lucide React
+
+## Testing the Form
+
+1. Try submitting empty forms to see validation errors
+2. Enter invalid email/phone formats
+3. Use the back button to navigate between steps
+4. All form data persists when navigating back
+5. Copy wallet address and transaction ID
+
+## Future Enhancements
+
+- [ ] Integrate real banking API for account verification
+- [ ] Add transaction history
+- [ ] Implement actual blockchain integration
+- [ ] Add unit tests with Jest/React Testing Library
+
+## License
+
+MIT
