@@ -55,3 +55,9 @@ export const currencyIcons: Record<string, string | StaticImageData> = {
   usd: us,
   eur: eur,
 };
+
+export const countries = [
+  { code: "+234", name: "Nigeria", flag: ngn },
+  { code: "+1", name: "USA", flag: us },
+  { code: "+44", name: "UK", flag: eur },
+];

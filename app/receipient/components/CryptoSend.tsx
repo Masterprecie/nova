@@ -1,6 +1,6 @@
 import { Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CardContent, CardFooter } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import info from "@/assets/svg/info.svg";
 import { useState } from "react";
@@ -14,13 +14,12 @@ interface TransactionData {
 }
 const CryptoSend = ({ onNext }: { onNext: () => void }) => {
   const [copied, setCopied] = useState(false);
-  const [transactionData, setTransactionData] =
-    useState<TransactionData | null>(() => {
-      if (typeof window === "undefined") return null;
+  const [transactionData] = useState<TransactionData | null>(() => {
+    if (typeof window === "undefined") return null;
 
-      const data = sessionStorage.getItem("transactionData");
-      return data ? JSON.parse(data) : null;
-    });
+    const data = sessionStorage.getItem("transactionData");
+    return data ? JSON.parse(data) : null;
+  });
 
   const [walletAddress] = useState(
     () => "0x" + Math.random().toString(16).slice(2, 40).toUpperCase()

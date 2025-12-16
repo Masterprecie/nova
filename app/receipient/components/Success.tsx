@@ -58,7 +58,10 @@ const Success = ({ formData }: { formData: FormData }) => {
       </div>
 
       <Link href={"/"}>
-        <Button variant="ghost" className="mt-4">
+        <Button
+          variant="ghost"
+          className="text-sm md:text-base font-bold text-primary mt-4"
+        >
           Go back to home
         </Button>
       </Link>

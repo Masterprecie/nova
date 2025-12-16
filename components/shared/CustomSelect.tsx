@@ -7,7 +7,7 @@ const IconSelectItem = React.forwardRef<
 >(({ className, children, icon, ...props }, ref) => (
   <SelectItem
     ref={ref}
-    className={`flex items-center gap-2 ${className}`}
+    className={`flex my-2 py-2 text-base items-center gap-2 ${className}`}
     {...props}
   >
     {icon && (

@@ -10,9 +10,11 @@ import { transactionSchema } from "@/lib/validations";
 import { currencyOptions, exchangeRates, tokenOptions } from "@/lib/mockData";
 import SearchablePopover from "@/components/shared/SearchablePopover";
 import WalletSelect from "./components/WalletSelect";
+import { useState } from "react";
 
 const MainPage = () => {
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -23,7 +25,9 @@ const MainPage = () => {
       payToWallet: "Metamask",
     },
     validationSchema: transactionSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
+      setIsSubmitting(true);
+
       // Calculate receive amount
       const rate = exchangeRates[values.selectedToken][values.selectedCurrency];
       const receiveAmount = (parseFloat(values.payAmount) * rate).toFixed(2);
@@ -42,6 +46,8 @@ const MainPage = () => {
         "transactionData",
         JSON.stringify(transactionData)
       );
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setIsSubmitting(false);
       router.push("/receipient");
     },
   });
@@ -159,7 +165,7 @@ const MainPage = () => {
         onClick={() => formik.handleSubmit()}
         className="w-full  text-sm md:text-base text-[#E6FBF2] font-bold cursor-pointer rounded-full mt-10 h-15"
       >
-        Convert now
+        {isSubmitting ? "Processing..." : "   Convert now"}
       </Button>
     </CardLayout>
   );

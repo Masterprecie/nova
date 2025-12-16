@@ -20,7 +20,7 @@ A modern cryptocurrency exchange platform built with Next.js, featuring multi-st
 
 ```bash
    git clone <https://github.com/Masterprecie/nova.git>
-   cd novacrust
+   cd nova
 ```
 
 2. **Install dependencies**
